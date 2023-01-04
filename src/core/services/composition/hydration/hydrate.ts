@@ -60,8 +60,7 @@ export const hydrate = async function(assets: Assets): Promise<Assets> {
     }
     const componentsMap = makeComponentsMap(componentPaths);
     for (const _asset of assets) {
-        if (_asset.assetType !== "template") continue;
-        if (typeof _asset.content === "undefined") continue;
+        if (_asset.assetType !== "template" || typeof _asset.content === "undefined") continue;
         const componentTokensPaths = getPathsFromComponentTokens(_asset.content);
         if (componentTokensPaths.length === 0) continue;
         // Document contains compnents, needs hydration.
