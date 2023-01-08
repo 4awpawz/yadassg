@@ -12,14 +12,14 @@ import type { Asset, Assets } from "../../types/types";
 import * as metrics from "../lib/metrics.js";
 
 /**
- * Serialize pages.
+ * Serialize every template's content except those that are used to generate a collection.
  */
 
 const serializePages = async function(assets: Assets) {
     const buildFolder = (await getConfiguration()).buildFolder;
     const buildPath = path.join(process.cwd(), buildFolder);
     _remove(buildFolder);
-    const templateAssets: Assets = _filter(assets, asset => asset.assetType === "template");
+    const templateAssets: Assets = _filter(assets, asset => asset.assetType === "template" && !asset.isCollection);
     for (let i = 0; i < templateAssets.length; i++) {
         const asset = templateAssets[i] as Asset;
         const outputPath = path.join(buildPath, asset.htmlDocumentName as string);
