@@ -12,7 +12,7 @@ export const compose = async function(assets: Assets): Promise<Assets> {
     for (const _asset of assets) {
         if (_asset.assetType !== "template") continue;
         _asset.associatedPage === "" ? await composeWithoutPage(_asset, assets) : await composeWithPage(_asset, assets);
-        // TODO: 23/01/04 15:33:01 - jeffreyschwartz : If the asset is a collection, maybe process it here or maybe after hydration occurs so that hydration won't have to be repeated for every generated page in the collection?
+        // TODO: 23/01/04 15:33:01 - jeffreyschwartz : If the asset is a collection process it here.
     }
     metrics.stopTimer("composition");
     return assets;
