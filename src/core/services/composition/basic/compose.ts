@@ -1,5 +1,5 @@
 /**
- * Compose - Compose pages using CategorizedPages.
+ * Compose - Compose pages.
  */
 
 import { composeWithoutPage } from "./composeWithoutPage.js";
